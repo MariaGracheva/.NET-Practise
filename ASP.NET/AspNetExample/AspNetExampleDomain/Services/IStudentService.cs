@@ -13,5 +13,7 @@ namespace AspNetExampleDomain.Services
         Task<Student> GetStudentAsync(Guid id);
 
         Task<IEnumerable<GetStudentResponse>> GetStudentsAsync();
+
+        Task AddStudentToCourse(Guid studentId, Guid courseId);
     }
 }

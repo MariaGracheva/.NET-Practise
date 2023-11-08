@@ -10,5 +10,7 @@ namespace AspNetExampleDomain.Services
     public interface ICourseService
     {
         Task CreateCourseAsync(CreateCourseRequest createCourseModel);
+
+        Task<GetCourseResponse> GetCourseAsync(Guid id);
     }
 }

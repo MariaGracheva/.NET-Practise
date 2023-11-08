@@ -47,11 +47,19 @@ namespace AspNetExample.WebApi.Controllers
 
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<GetStudentResponse[]>> GetSudents()
+        public async Task<ActionResult<IEnumerable<GetStudentResponse>>> GetSudents()
         {
            var students = await _studentService.GetStudentsAsync();
 
             return Ok(students);
+        }
+
+        [HttpPut("addStudent")]
+        public async Task<IActionResult> AddStudentToCourse(Guid studentId, Guid courseId)
+        {
+            await _studentService.AddStudentToCourse(studentId, courseId);
+
+            return Ok();
         }
     }
 }

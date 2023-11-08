@@ -23,5 +23,13 @@ namespace AspNetExample.WebApi.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<GetCourseResponse>> GetCorse(Guid id)
+        {
+            var courseResponse = await _courseService.GetCourseAsync(id);
+
+            return Ok(courseResponse);
+        }
     }
 }

@@ -13,6 +13,17 @@ namespace AspNetExamleDataLayer.Repositories
             _context = context;
         }
 
+        public async Task AddStudentToCourse(Guid studentId, Guid courseId)
+        {
+            var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == studentId);
+
+            var course = await _context.Courses.Include(s=> s.Students).FirstOrDefaultAsync(s => s.Id == courseId);
+
+            course.Students.Add(student);
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task CreateStudentAsync(Student student)
         {
             await _context.AddAsync(student);
@@ -22,12 +33,19 @@ namespace AspNetExamleDataLayer.Repositories
 
         public async Task<Student> GetStudentAsync(Guid id)
         {
-           return await _context.Students.SingleOrDefaultAsync(s => s.Id == id);
+            return await _context.Students.SingleOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<Student[]> GetStudentsSAsync()
         {
             return await _context.Students.ToArrayAsync();
+        }
+
+        public async Task<bool> StudentHasBeenRegisteredToCourse(Guid studentId, Guid courseId)
+        {
+            var course = await _context.Courses.Include(s => s.Students).FirstOrDefaultAsync(s => s.Id == courseId);
+
+            return course.Students.Any(s => s.Id == studentId);
         }
 
         public async Task UpdateStudentAsync(Student student)

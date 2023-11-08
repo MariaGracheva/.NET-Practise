@@ -12,5 +12,9 @@ namespace AspNetExampleBusinesLayer.Services.Repositories
         Task<Student> GetStudentAsync(Guid id);
 
         Task<Student[]> GetStudentsSAsync();
+
+        Task AddStudentToCourse(Guid studentId, Guid courseId);
+
+        Task<bool> StudentHasBeenRegisteredToCourse(Guid studentId, Guid courseId);
     }
 }

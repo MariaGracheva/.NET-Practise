@@ -25,5 +25,10 @@ namespace AspNetExampleBusinesLayer.Services
 
             await _courseRepository.CreateCourseAsync(course);
         }
+
+        public async Task<GetCourseResponse> GetCourseAsync(Guid id)
+        {
+            return await _courseRepository.GetCourseAsync(id);
+        }
     }
 }

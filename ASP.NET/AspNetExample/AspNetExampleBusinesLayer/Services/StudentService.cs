@@ -63,5 +63,16 @@ namespace AspNetExampleBusinesLayer.Services
             await _studentRepository.UpdateStudentAsync(student);
         }
 
+        public async Task AddStudentToCourse(Guid studentId, Guid courseId)
+        {
+            var studentAlreadyRegistered = await _studentRepository.StudentHasBeenRegisteredToCourse(studentId, courseId);
+
+            if (studentAlreadyRegistered)
+            {
+                throw new Exception("Студент уже добавлен на данный курс");
+            }
+
+            await _studentRepository.AddStudentToCourse(studentId, courseId);
+        }
     }
 }
