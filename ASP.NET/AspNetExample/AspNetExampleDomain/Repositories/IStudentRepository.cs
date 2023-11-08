@@ -16,5 +16,7 @@ namespace AspNetExampleBusinesLayer.Services.Repositories
         Task AddStudentToCourse(Guid studentId, Guid courseId);
 
         Task<bool> StudentHasBeenRegisteredToCourse(Guid studentId, Guid courseId);
+
+        Task<GetStudentMarkResponse> GetGetStudentMarkAsync(Guid studentId);
     }
 }

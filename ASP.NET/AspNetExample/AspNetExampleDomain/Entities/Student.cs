@@ -15,5 +15,7 @@ namespace AspNetExampleDomain.Entities
         public Gender Gender { get; set; }
 
         public List<Course> Courses { get; set; }
+
+        public List<Mark> Marks { get; set; }
     }
 }

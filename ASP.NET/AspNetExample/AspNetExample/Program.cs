@@ -28,6 +28,8 @@ namespace AspNetExample
             builder.Services.AddTransient<IStudentRepository, StudentRepository>();
             builder.Services.AddTransient<ICourseService, CourseService>();
             builder.Services.AddTransient<ICourseRepository, CourseRepository>();
+            builder.Services.AddTransient<IMarkService, MarkService>();
+            builder.Services.AddTransient<IMarkRepository, MarkRepository>();
 
 
             builder.Services.AddControllers();

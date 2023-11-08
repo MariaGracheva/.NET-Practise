@@ -74,5 +74,10 @@ namespace AspNetExampleBusinesLayer.Services
 
             await _studentRepository.AddStudentToCourse(studentId, courseId);
         }
+
+        public async Task<GetStudentMarkResponse> GetGetStudentMarkAsync(Guid studentId)
+        {
+            return await _studentRepository.GetGetStudentMarkAsync(studentId);
+        }
     }
 }

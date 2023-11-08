@@ -11,5 +11,7 @@ namespace AspNetExampleDomain.Models.Course
         public string Name { get; set; }
 
         public int Capacity { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }

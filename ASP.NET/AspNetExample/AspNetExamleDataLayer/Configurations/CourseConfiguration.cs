@@ -22,6 +22,9 @@ namespace AspNetExamleDataLayer.Configurations
             builder.Property(c => c.Capacity)
                 .IsRequired();
 
+            builder.Property(c => c.Date)
+               .IsRequired();
+
             builder.HasMany(c => c.Students)
                 .WithMany(s => s.Courses);
 

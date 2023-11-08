@@ -61,5 +61,13 @@ namespace AspNetExample.WebApi.Controllers
 
             return Ok();
         }
+
+        [HttpGet("marks")]
+        public async Task<ActionResult<GetStudentMarkResponse>> GetStudentMarks(Guid studentId)
+        {
+            var studentMarks = await _studentService.GetGetStudentMarkAsync(studentId);
+
+            return Ok(studentMarks);
+        }
     }
 }

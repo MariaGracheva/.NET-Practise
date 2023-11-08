@@ -21,6 +21,7 @@ namespace AspNetExampleBusinesLayer.Services
                 Id = Guid.NewGuid(),
                 Name = createCourseModel.Name,
                 Capacity = createCourseModel.Capacity,
+                Date = createCourseModel.Date.ToUniversalTime()
             };
 
             await _courseRepository.CreateCourseAsync(course);

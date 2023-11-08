@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AspNetExampleDomain.Entities
 {
+    /// <summary>
+    /// Занятие
+    /// </summary>
     public class Course
     {
         public Guid Id { get; set; }
@@ -14,6 +17,10 @@ namespace AspNetExampleDomain.Entities
 
         public int Capacity { get; set; }
 
+        public DateTime Date { get; set; }
+
         public List<Student> Students { get; set; }
+
+        public List<Mark> Marks { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace AspNetExamleDataLayer
 
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<Mark> Marks { get; set; }
+
         public EFContext([NotNull] DbContextOptions<EFContext> options): base(options) 
         {
 

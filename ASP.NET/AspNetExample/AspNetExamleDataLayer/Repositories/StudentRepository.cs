@@ -1,5 +1,7 @@
 ﻿using AspNetExampleBusinesLayer.Services.Repositories;
 using AspNetExampleDomain.Entities;
+using AspNetExampleDomain.Models.Mark;
+using AspNetExampleDomain.Models.Student;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetExamleDataLayer.Repositories
@@ -29,6 +31,26 @@ namespace AspNetExamleDataLayer.Repositories
             await _context.AddAsync(student);
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<GetStudentMarkResponse> GetGetStudentMarkAsync(Guid studentId)
+        {
+            return await _context.Students
+                .Where(s => s.Id == studentId)
+                .Select(s => new GetStudentMarkResponse
+                {
+                    Name = s.Name,
+                    Surname = s.Surname,
+                    Marks = s.Marks.Select(m => new GetMarkResponse
+                    {
+                        Value = m.Value,
+                        CourseId = m.CourseId,
+                        CourseName = m.Course.Name,
+                        CourseDate = m.Course.Date
+
+                    })
+                }).SingleOrDefaultAsync();
+
         }
 
         public async Task<Student> GetStudentAsync(Guid id)
